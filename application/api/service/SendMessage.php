@@ -46,10 +46,10 @@ class SendMessage
             $rtn = https_curl_json($url,$postData,'json');
             Log::write($rtn,'notice');
             echo $rtn;return;
-            if((json_decode($rtn,true))['errcode']==0){
-                orderModel::update(['id' => $order_id, 'status' => OrderStatusEnum::DELIVERED]);
-            }
-            return $rtn;
+            //if((json_decode($rtn,true))['errcode']==0){
+              //  orderModel::update(['id' => $order_id, 'status' => OrderStatusEnum::DELIVERED]);
+            //}
+         //   return $rtn;
         }
        private function getId($order_id)
        {
