@@ -22,6 +22,9 @@ class Banner
 	 */
     public function getBanner($id)
     {
+        //这里可以输出成功可证名就算单独生成config 原先的没被覆盖的还是会生效
+//        echo config('var_pathinfo');return;
+
         //开闭原则：扩展是开放的，对修改是封闭的
         /*
         //自动验证
