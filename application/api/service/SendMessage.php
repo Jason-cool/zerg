@@ -49,7 +49,7 @@ class SendMessage
 //             var_dump(json_decode($rtn,true)['errcode']);
 //             return;
             $errArr = json_decode($rtn,true)['errcode'];
-            if(($errArr==0){
+            if($errArr==0){
                orderModel::update(['id' => $order_id, 'status' => OrderStatusEnum::DELIVERED]);
             }
            return $rtn;
