@@ -12,6 +12,7 @@ namespace app\api\service;
 use app\api\model\FormOpenUserOrder;
 use app\api\model\Order as OrderModel;
 use app\lib\enum\OrderStatusEnum;
+use think\Log;
 
 class SendMessage
 {
@@ -43,6 +44,7 @@ class SendMessage
             );
             $url = "https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token={$accessToken}";
             $rtn = https_curl_json($url,$postData,'json');
+            Log::write($rtn,'notice');
             if((json_decode($rtn,true))['errcode']==0){
                 orderModel::update(['id' => $order_id, 'status' => OrderStatusEnum::DELIVERED]);
             }
