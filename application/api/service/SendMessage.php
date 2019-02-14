@@ -45,13 +45,13 @@ class SendMessage
             $url = "https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token={$accessToken}";
             $rtn = https_curl_json($url,$postData,'json');
             Log::write($rtn,'notice');
-            echo $rtn;
-            var_dump(json_decode($rtn,true)['errcode']);
-            return;
-            //if((json_decode($rtn,true))['errcode']==0){
-              //  orderModel::update(['id' => $order_id, 'status' => OrderStatusEnum::DELIVERED]);
-            //}
-         //   return $rtn;
+//             echo $rtn;
+//             var_dump(json_decode($rtn,true)['errcode']);
+//             return;
+            if((json_decode($rtn,true))['errcode']==0){
+               orderModel::update(['id' => $order_id, 'status' => OrderStatusEnum::DELIVERED]);
+            }
+           return $rtn;
         }
        private function getId($order_id)
        {
