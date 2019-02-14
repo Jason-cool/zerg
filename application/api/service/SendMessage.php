@@ -44,8 +44,9 @@ class SendMessage
             );
             $url = "https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token={$accessToken}";
             $rtn = https_curl_json($url,$postData,'json');
-            dump($rtn);
-            Log::write($rtn,'notice');
+            print($rtn);
+            var_dump(json_decode($rtn,true));
+//            Log::write($rtn,'notice');
             if((json_decode($rtn,true))['errcode']==0){
                 orderModel::update(['id' => $order_id, 'status' => OrderStatusEnum::DELIVERED]);
             }
